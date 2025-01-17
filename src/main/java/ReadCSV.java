@@ -1,0 +1,122 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
+/**
+ * An example of how to read and process a simple CSV file.
+ * This code uses only basic features of the Java language.
+ * Feel free to modify this example by using a List (instead of array)
+ * and other collections.
+ */
+public class ReadCSV {
+    public static void main(String[] args) {
+        String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
+
+        try {
+            String[][] data = readData(csvFileName);
+            //printData(data);
+        } catch (IOException e) {
+            System.out.println("Failed to read " + csvFileName);
+        }
+    }
+
+    /**
+     * Read the contents of a CSV file and return data as a 2D array of String.
+     * @param csvFileName - the CSV file name
+     * @return data - the values in the CSV file
+     * @throws IOException - input/output error
+     */
+    public static String[][] readData(String csvFileName) throws IOException {
+        // Create a stream to read the CSV file
+        String[][] data;
+        int index = 0;
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFileName))) {
+            // Skip the header - this assumes the first line is a header
+            reader.readLine();
+
+            // Create 2D array to store all rows of data as String
+            int initialSize = 100;
+            data = new String[initialSize][];
+
+            // Read the file line by line and store all rows into a 2D array
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split a line by comma works for simple CSV files
+                String[] values = line.split(",");
+
+                // Check if the array is full
+                if (index == data.length)
+                    // Array is full, create and copy all values to a larger array
+                    data = Arrays.copyOf(data, data.length * 2);
+
+                data[index++] = values;
+            }
+        }
+
+        // Remove empty rows in the array and return it
+        return Arrays.copyOf(data, index);
+    }
+
+    /**
+     * Print all rows of data.
+     * @param data - 2D array containing data
+     */
+    public static void printData(String[][] data) {
+        System.out.println("The number of records: " + data.length);
+        for (String[] row : data) {
+            System.out.println("Number of parameters: " + row.length);
+            System.out.println("Account Number: " + row[0]);
+            System.out.println("Suite: " + row[1]);
+            System.out.println("House Number: " + row[2]);
+            System.out.println("Street Name: " + row[3]);
+            System.out.println("Garage: " + row[4]);
+            System.out.println("Neighbourhood ID: " + row[5]);
+            System.out.println("Neighbourhood: " + row[6]);
+            System.out.println("Ward: " + row[7]);
+            System.out.println("Assessed Value: $" + row[8]);
+            System.out.println("Latitude: " + row[9]);
+            System.out.println("Longitude: " + row[10]);
+            System.out.println("Point Location: " + row[11]);
+            System.out.println("Assessment Class % 1: " + row[12] + "%");
+            System.out.println("Assessment Class % 2: " + row[13] + "%");
+            System.out.println("Assessment Class % 3: " + row[14] + "%");
+            System.out.println("Assessment Class 1: " + row[15]);
+            if (row.length > 16) {
+                System.out.println("Assessment Class 2: " + row[16]);
+            }
+            if (row.length > 17) {
+                System.out.println("Assessment Class 3: " + row[17]);
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * Display menu for user to select CSV data info.
+     * @param data - 2D array containing data
+     */
+    public static void dataMenu(String[][] data) {
+        boolean runMenu = true;
+        String menu = menuDisplay();
+        System.out.println(menu);
+        while (runMenu) {
+        }
+    }
+
+    public static String menuDisplay() {
+        return """
+                Welcome to the City of Edmonton Property Assessment Data Menu!
+                
+                Please select an option:
+                \t1) Number of records
+                \t2) Lowest and highest assessed property values
+                \t3) Number of wards
+                \t4) List of property assessment classes
+                \t5) Exit
+                
+                Option:""";
+    }
+
+}
