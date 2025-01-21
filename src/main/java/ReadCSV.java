@@ -17,7 +17,7 @@ public class ReadCSV {
 
         try {
             String[][] data = readData(csvFileName);
-            //printData(data);
+            dataMenu(data);
         } catch (IOException e) {
             System.out.println("Failed to read " + csvFileName);
         }
@@ -100,6 +100,7 @@ public class ReadCSV {
      */
     public static void dataMenu(String[][] data) {
         boolean runMenu = true;
+        System.out.println("Welcome to the City of Edmonton Property Assessment Data Menu!\n");
         String menu = menuDisplay();
         Scanner userSelection = new Scanner(System.in);
         while (runMenu) {
@@ -107,7 +108,7 @@ public class ReadCSV {
             String choice = userSelection.nextLine();
             int choiceInt = checkValidInt(choice);
             if (choiceInt == -1) {
-                System.out.println("Invalid input");
+                System.out.println("Invalid input\n");
             }
             else if (choiceInt >= 1 && choiceInt <= 4) {
                 handleChoice(choiceInt, data);
@@ -115,15 +116,13 @@ public class ReadCSV {
             else if (choiceInt == 5) {
                 runMenu = false;
             } else {
-                System.out.println("Invalid choice");
+                System.out.println("Invalid choice\n");
             }
         }
     }
 
     public static String menuDisplay() {
         return """
-                Welcome to the City of Edmonton Property Assessment Data Menu!
-                
                 Please select an option:
                 \t1) Number of records
                 \t2) Lowest and highest assessed property values
@@ -152,15 +151,27 @@ public class ReadCSV {
         }
     }
 
+    /**
+     * Display data for the user depending on choice selection
+     * @param choice - int menu choice by user
+     * @param data - 2D array containing info
+     */
     public static void handleChoice(int choice, String[][] data) {
         switch (choice) {
             case 1:
                 recordsCount(data);
+                break;
+            case 2:
+
         }
     }
 
+    /**
+     * Display number of records in the data set
+     * @param data - 2D array containing nfo
+     */
     public static void recordsCount(String[][] data) {
-        System.out.println("The number of records: " + data.length);
+        System.out.println("The number of records: " + data.length + "\n");
     }
 
 }
