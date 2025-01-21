@@ -103,9 +103,20 @@ public class ReadCSV {
         String menu = menuDisplay();
         Scanner userSelection = new Scanner(System.in);
         while (runMenu) {
+            System.out.println(menu);
             String choice = userSelection.nextLine();
             int choiceInt = checkValidInt(choice);
-
+            if (choiceInt == -1) {
+                System.out.println("Invalid input");
+            }
+            else if (choiceInt >= 1 && choiceInt <= 4) {
+                handleChoice(choiceInt, data);
+            }
+            else if (choiceInt == 5) {
+                runMenu = false;
+            } else {
+                System.out.println("Invalid choice");
+            }
         }
     }
 
@@ -139,6 +150,17 @@ public class ReadCSV {
         } catch (NumberFormatException e) {
             return -1;
         }
+    }
+
+    public static void handleChoice(int choice, String[][] data) {
+        switch (choice) {
+            case 1:
+                recordsCount(data);
+        }
+    }
+
+    public static void recordsCount(String[][] data) {
+        System.out.println("The number of records: " + data.length);
     }
 
 }
