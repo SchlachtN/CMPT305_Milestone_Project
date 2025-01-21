@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * An example of how to read and process a simple CSV file.
@@ -100,8 +101,11 @@ public class ReadCSV {
     public static void dataMenu(String[][] data) {
         boolean runMenu = true;
         String menu = menuDisplay();
-        System.out.println(menu);
+        Scanner userSelection = new Scanner(System.in);
         while (runMenu) {
+            String choice = userSelection.nextLine();
+            int choiceInt = checkValidInt(choice);
+
         }
     }
 
@@ -117,6 +121,24 @@ public class ReadCSV {
                 \t5) Exit
                 
                 Option:""";
+    }
+
+    /**
+     * Check that user has inputted a valid integer for menu
+     * @param choice - the string input given by the user
+     * @return choiceInt - Integer conversion of user choice or -1 if unable to parse to int
+     */
+    public static int checkValidInt(String choice) {
+        try {
+            int choiceInt = Integer.parseInt(choice);
+            if (choiceInt == -1) {
+                return 0;
+            } else {
+                return choiceInt;
+            }
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
 }
