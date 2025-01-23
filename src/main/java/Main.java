@@ -11,7 +11,7 @@ import java.util.HashSet;
  * property assessment values in the City of Edmonton) and
  * allow various methods to display specific information.
  */
-public class PropertyAssessmentApp {
+public class Main {
     public static void main(String[] args) {
         String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
 
