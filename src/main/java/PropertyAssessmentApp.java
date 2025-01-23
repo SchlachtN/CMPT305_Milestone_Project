@@ -7,9 +7,11 @@ import java.util.Scanner;
 import java.util.HashSet;
 
 /**
- * Class
+ * Class reads a CSV file ( specifically the CSV file for
+ * property assessment values in the City of Edmonton) and
+ * allow various methods to display specific information.
  */
-public class ReadCSV {
+public class PropertyAssessmentApp {
     public static void main(String[] args) {
         String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
 
@@ -164,7 +166,7 @@ public class ReadCSV {
                 highestValue = value;
                 highestIndex = i;
             }
-            if (value < lowestValue && value > 0) {
+            if (value < lowestValue) {
                 lowestValue = value;
                 lowestIndex = i;
             }
@@ -183,7 +185,7 @@ public class ReadCSV {
      * @param data - 2D array containing property info
      */
     public static void numberOfWards(String[][] data) {
-        HashSet<String> wardSet = new HashSet<String>();
+        HashSet<String> wardSet = new HashSet<>();
 
         for (String[] row : data) {
             if(!row[7].isBlank()) {
@@ -199,7 +201,7 @@ public class ReadCSV {
      * @param data - 2D array containing property info
      */
     public static void listAssessmentClasses(String[][] data) {
-        HashSet<String> assetClasses = new HashSet<String>();
+        HashSet<String> assetClasses = new HashSet<>();
 
         for (String[] row : data) {
             assetClasses.add(row[15]);
