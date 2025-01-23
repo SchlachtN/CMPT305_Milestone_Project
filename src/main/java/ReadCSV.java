@@ -59,11 +59,7 @@ public class ReadCSV {
         // Remove empty rows in the array and return it
         return Arrays.copyOf(data, index);
     }
-
-    /**
-     * Print all rows of data.
-     * @param data - 2D array containing data
-     */
+    /*
     public static void printData(String[][] data) {
         System.out.println("The number of records: " + data.length);
         for (String[] row : data) {
@@ -93,6 +89,7 @@ public class ReadCSV {
             System.out.println();
         }
     }
+    */
 
     /**
      * Display menu for user to select CSV data info.
@@ -162,7 +159,10 @@ public class ReadCSV {
                 recordsCount(data);
                 break;
             case 2:
-
+                highAndLowAssetValues(data);
+                break;
+            default:
+                break;
         }
     }
 
@@ -172,6 +172,33 @@ public class ReadCSV {
      */
     public static void recordsCount(String[][] data) {
         System.out.println("The number of records: " + data.length + "\n");
+    }
+
+    public static void highAndLowAssetValues(String[][] data) {
+        double highestValue = 0;
+        double lowestValue = Double.POSITIVE_INFINITY;
+        int highestIndex = 0;
+        int lowestIndex = 0;
+
+        for (int i = 0; i < data.length; i++) {
+            double value = Double.parseDouble(data[i][8]);
+
+            if (value > highestValue) {
+                highestValue = value;
+                highestIndex = i;
+            }
+            if (value < lowestValue && value > 0) {
+                lowestValue = value;
+                lowestIndex = i;
+            }
+        }
+
+        System.out.println("Highest Value: $" + data[highestIndex][8]);
+        System.out.print("Account Number: " + data[highestIndex][0] + " at ");
+        System.out.print(data[highestIndex][2] + " " + data[highestIndex][3] + "\n");
+        System.out.println("Lowest Value: $" + data[lowestIndex][8]);
+        System.out.print("Account Number: " + data[lowestIndex][0] + " at ");
+        System.out.print(data[lowestIndex][2] + " " + data[lowestIndex][3] + "\n\n");
     }
 
 }
