@@ -4,12 +4,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.HashSet;
 
 /**
- * An example of how to read and process a simple CSV file.
- * This code uses only basic features of the Java language.
- * Feel free to modify this example by using a List (instead of array)
- * and other collections.
+ * Class
  */
 public class ReadCSV {
     public static void main(String[] args) {
@@ -59,37 +57,6 @@ public class ReadCSV {
         // Remove empty rows in the array and return it
         return Arrays.copyOf(data, index);
     }
-    /*
-    public static void printData(String[][] data) {
-        System.out.println("The number of records: " + data.length);
-        for (String[] row : data) {
-            System.out.println("Number of parameters: " + row.length);
-            System.out.println("Account Number: " + row[0]);
-            System.out.println("Suite: " + row[1]);
-            System.out.println("House Number: " + row[2]);
-            System.out.println("Street Name: " + row[3]);
-            System.out.println("Garage: " + row[4]);
-            System.out.println("Neighbourhood ID: " + row[5]);
-            System.out.println("Neighbourhood: " + row[6]);
-            System.out.println("Ward: " + row[7]);
-            System.out.println("Assessed Value: $" + row[8]);
-            System.out.println("Latitude: " + row[9]);
-            System.out.println("Longitude: " + row[10]);
-            System.out.println("Point Location: " + row[11]);
-            System.out.println("Assessment Class % 1: " + row[12] + "%");
-            System.out.println("Assessment Class % 2: " + row[13] + "%");
-            System.out.println("Assessment Class % 3: " + row[14] + "%");
-            System.out.println("Assessment Class 1: " + row[15]);
-            if (row.length > 16) {
-                System.out.println("Assessment Class 2: " + row[16]);
-            }
-            if (row.length > 17) {
-                System.out.println("Assessment Class 3: " + row[17]);
-            }
-            System.out.println();
-        }
-    }
-    */
 
     /**
      * Display menu for user to select CSV data info.
@@ -161,6 +128,12 @@ public class ReadCSV {
             case 2:
                 highAndLowAssetValues(data);
                 break;
+            case 3:
+                numberOfWards(data);
+                break;
+            case 4:
+                listAssessmentClasses(data);
+                break;
             default:
                 break;
         }
@@ -168,12 +141,16 @@ public class ReadCSV {
 
     /**
      * Display number of records in the data set
-     * @param data - 2D array containing nfo
+     * @param data - 2D array containing property info
      */
     public static void recordsCount(String[][] data) {
         System.out.println("The number of records: " + data.length + "\n");
     }
 
+    /**
+     * Find indices for highest and lowest assessed properties and display their info
+     * @param data - 2D array containing property info
+     */
     public static void highAndLowAssetValues(String[][] data) {
         double highestValue = 0;
         double lowestValue = Double.POSITIVE_INFINITY;
@@ -201,4 +178,45 @@ public class ReadCSV {
         System.out.print(data[lowestIndex][2] + " " + data[lowestIndex][3] + "\n\n");
     }
 
+    /**
+     * Determine number of wards for city properties and display count
+     * @param data - 2D array containing property info
+     */
+    public static void numberOfWards(String[][] data) {
+        HashSet<String> wardSet = new HashSet<String>();
+
+        for (String[] row : data) {
+            if(!row[7].isBlank()) {
+                wardSet.add(row[7]);
+            }
+        }
+
+        System.out.println("The number of wards: " + wardSet.size() + "\n");
+    }
+
+    /**
+     * Adds all assessment classes to a hash set and list them
+     * @param data - 2D array containing property info
+     */
+    public static void listAssessmentClasses(String[][] data) {
+        HashSet<String> assetClasses = new HashSet<String>();
+
+        for (String[] row : data) {
+            assetClasses.add(row[15]);
+            if (row.length > 16) {
+                assetClasses.add(row[16]);
+            }
+            if (row.length > 17) {
+                assetClasses.add(row[17]);
+            }
+        }
+
+        System.out.println("Assessment Classes:");
+        for (String assetClass : assetClasses) {
+            if (!assetClass.isBlank()) {
+                System.out.println(assetClass);
+            }
+        }
+        System.out.println("\n");
+    }
 }
