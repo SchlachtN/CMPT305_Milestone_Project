@@ -4,7 +4,7 @@ public class PropertyAssessment {
     private String garage;
     private Neighbourhood neighbourhood;
     private String assessmentValue;
-    private String pointLocation;
+    private PointLocation pointLocation;
     private String assessmentClassification;
 
     public PropertyAssessment(String[] propertyData) {
@@ -13,6 +13,7 @@ public class PropertyAssessment {
         this.garage = propertyData[4];
         this.neighbourhood = new Neighbourhood(propertyData[5],propertyData[6],propertyData[7]);
         this.assessmentValue = propertyData[8];
+        this.pointLocation = new PointLocation(propertyData[9],propertyData[10]);
     }
 
     public String getAccountNo() {
