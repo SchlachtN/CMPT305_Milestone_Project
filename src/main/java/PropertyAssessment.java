@@ -1,22 +1,25 @@
 public class PropertyAssessment {
     private String accountNo;
-    private String propertyAddress;
+    private PropertyAddress propertyAddress;
     private String garage;
-    private String neighbourhood;
+    private Neighbourhood neighbourhood;
     private String assessmentValue;
     private String pointLocation;
     private String assessmentClassification;
 
     public PropertyAssessment(String[] propertyData) {
-        this.accountNo = getAccountNo();
-        this.propertyAddress = getPropertyAddress();
+        this.accountNo = propertyData[0];
+        this.propertyAddress = new PropertyAddress(propertyData[1], propertyData[2], propertyData[3]);
+        this.garage = propertyData[4];
+        this.neighbourhood = new Neighbourhood(propertyData[5],propertyData[6],propertyData[7]);
+        this.assessmentValue = propertyData[8];
     }
 
     public String getAccountNo() {
         return accountNo;
     }
 
-    public String getPropertyAddress() {
-        return propertyAddress;
+    public String getGarage() {
+        return garage;
     }
 }

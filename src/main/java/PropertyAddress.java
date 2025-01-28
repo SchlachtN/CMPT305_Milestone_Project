@@ -3,10 +3,10 @@ public class PropertyAddress {
     private String houseNo;
     private String streetName;
 
-    public PropertyAddress() {
-        this.suite = getSuite();
-        this.houseNo = getHouseNo();
-        this.streetName = getStreetName();
+    public PropertyAddress(String suiteData, String houseData, String streetData) {
+        this.suite = suiteData;
+        this.houseNo = houseData;
+        this.streetName = streetData;
     }
 
     public String getSuite() {
