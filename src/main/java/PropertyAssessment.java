@@ -5,7 +5,7 @@ public class PropertyAssessment {
     private Neighbourhood neighbourhood;
     private String assessmentValue;
     private PointLocation pointLocation;
-    private String assessmentClassification;
+    private AssessmentClass assessmentClassification;
 
     public PropertyAssessment(String[] propertyData) {
         this.accountNo = propertyData[0];
@@ -14,6 +14,16 @@ public class PropertyAssessment {
         this.neighbourhood = new Neighbourhood(propertyData[5],propertyData[6],propertyData[7]);
         this.assessmentValue = propertyData[8];
         this.pointLocation = new PointLocation(propertyData[9],propertyData[10]);
+        if (propertyData.length == 16) {
+            this.assessmentClassification = new AssessmentClass(propertyData[12], propertyData[13],
+                    propertyData[14], propertyData[15]);
+        } else if (propertyData.length == 17) {
+            this.assessmentClassification = new AssessmentClass(propertyData[12], propertyData[13],
+                    propertyData[14], propertyData[15], propertyData[16]);
+        } else if (propertyData.length == 18) {
+            this.assessmentClassification = new AssessmentClass(propertyData[12], propertyData[13],
+                    propertyData[14], propertyData[15], propertyData[16], propertyData[17]);
+        }
     }
 
     public String getAccountNo() {
