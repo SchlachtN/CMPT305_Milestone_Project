@@ -21,7 +21,8 @@ public class PropertyAddress {
         return streetName;
     }
 
-    public String getAddress() {
+    @Override
+    public String toString() {
         if(suite.isBlank()) {
             return (houseNo + " " + streetName);
         } else {

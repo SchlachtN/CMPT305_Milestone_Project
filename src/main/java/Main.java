@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.HashSet;
 
 /**
  * Class reads a CSV file ( specifically the CSV file for
@@ -57,45 +56,6 @@ public class Main {
 
         return propertyAssessments;
     }
-
-    /*
-    /**
-     * Read the contents of a CSV file and return data as a 2D array of String.
-     * @param csvFileName - the CSV file name
-     * @return data - the values in the CSV file
-     * @throws IOException - input/output error
-
-    public static String[][] readData(String csvFileName) throws IOException {
-        // Create a stream to read the CSV file
-        String[][] data;
-        int index = 0;
-        try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFileName))) {
-            // Skip the header - this assumes the first line is a header
-            reader.readLine();
-
-            // Create 2D array to store all rows of data as String
-            int initialSize = 100;
-            data = new String[initialSize][];
-
-            // Read the file line by line and store all rows into a 2D array
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Split a line by comma works for simple CSV files
-                String[] values = line.split(",");
-
-                // Check if the array is full
-                if (index == data.length)
-                    // Array is full, create and copy all values to a larger array
-                    data = Arrays.copyOf(data, data.length * 2);
-
-                data[index++] = values;
-            }
-        }
-
-        // Remove empty rows in the array and return it
-        return Arrays.copyOf(data, index);
-    }
-     */
 
     /**
      * Display menu for user to select CSV data info.
@@ -163,7 +123,7 @@ public class Main {
                 generalStats(propertyAssessments);
                 break;
             case 2:
-
+                propertyInfo(propertyAssessments);
                 break;
             case 3:
 
@@ -194,5 +154,18 @@ public class Main {
         System.out.println("mean = " + currencyFormat(mean));
         int median = propertyAssessments.getMedian();
         System.out.println("median = " + currencyFormat(median));
+    }
+
+    public static void propertyInfo(PropertyAssessments propertyAssessments) {
+        Scanner accountInput = new Scanner(System.in);
+        System.out.print("\nFind a property assessment by account number: ");
+        String accountNo = accountInput.nextLine();
+        PropertyAssessment searchedAccount = propertyAssessments.getPropertyAssessment(accountNo);
+        if (searchedAccount == null) {
+            System.out.println("Error: Invalid account number...");
+            return;
+        }
+        System.out.println("Account Number = " + searchedAccount.getAccountNo());
+        System.out.println("Address = " + searchedAccount.getAddress());
     }
 }

@@ -30,8 +30,8 @@ public class PropertyAssessment {
         return accountNo;
     }
 
-    public String getGarage() {
-        return garage;
+    public String getAddress() {
+        return propertyAddress.toString();
     }
 
     public Integer getAssessmentValueInt() {
