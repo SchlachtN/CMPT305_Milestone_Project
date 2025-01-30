@@ -18,13 +18,7 @@ public class Main {
         try {
             //String[][] data = readData(csvFileName);
             PropertyAssessments propertyAssessments = readData(csvFileName);
-            PropertyAssessment p = propertyAssessments.getPropertyAssessment(1191832);
-            if (p == null) {
-                System.out.println("Could not find account");
-            } else {
-                System.out.println("Found account");
-            }
-            //dataMenu(data);
+            dataMenu(propertyAssessments);
         } catch (IOException e) {
             System.out.println("Failed to read " + csvFileName);
         }
@@ -100,9 +94,9 @@ public class Main {
 
     /**
      * Display menu for user to select CSV data info.
-     * @param data - 2D array containing data
+     * @param propertyAssessments - PropertyAssessments class that stores PropertyAssessments
      */
-    public static void dataMenu(String[][] data) {
+    public static void dataMenu(PropertyAssessments propertyAssessments) {
         boolean runMenu = true;
         System.out.println("Welcome to the City of Edmonton Property Assessment Data Menu!\n");
         String menu = menuDisplay();
@@ -114,10 +108,10 @@ public class Main {
             if (choiceInt == -1) {
                 System.out.println("Invalid input\n");
             }
-            else if (choiceInt >= 1 && choiceInt <= 4) {
-                handleChoice(choiceInt, data);
+            else if (choiceInt >= 1 && choiceInt <= 3) {
+                handleChoice(choiceInt, propertyAssessments);
             }
-            else if (choiceInt == 5) {
+            else if (choiceInt == 4) {
                 runMenu = false;
             } else {
                 System.out.println("Invalid choice\n");
@@ -128,11 +122,10 @@ public class Main {
     public static String menuDisplay() {
         return """
                 Please select an option:
-                \t1) Number of records
-                \t2) Lowest and highest assessed property values
-                \t3) Number of wards
-                \t4) List of property assessment classes
-                \t5) Exit
+                \t1) General Statistics
+                \t2) Individual Property Information
+                \t3) Neighbourhood Information
+                \t4) Exit
                 
                 Option:""";
     }
@@ -160,19 +153,19 @@ public class Main {
      * @param choice - int menu choice by user
      * @param data - 2D array containing info
      */
-    public static void handleChoice(int choice, String[][] data) {
+    public static void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
             case 1:
-                recordsCount(data);
+                recordsCount(propertyAssessments);
                 break;
             case 2:
-                highAndLowAssetValues(data);
+                highAndLowAssetValues(propertyAssessments);
                 break;
             case 3:
-                numberOfWards(data);
+                numberOfWards(propertyAssessments);
                 break;
             case 4:
-                listAssessmentClasses(data);
+                listAssessmentClasses(propertyAssessments);
                 break;
             default:
                 break;
