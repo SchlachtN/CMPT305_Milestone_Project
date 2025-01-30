@@ -8,7 +8,13 @@ public class PropertyAssessments {
     }
 
     public PropertyAssessment getPropertyAssessment(int id) {
-
+        String searchedAccountNo = Integer.toString(id);
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            if (propertyAssessment.getAccountNo().equals(searchedAccountNo)) {
+                return propertyAssessment;
+            }
+        }
+        return null;
     }
 
     public void addProperty(PropertyAssessment propertyAssessment) {

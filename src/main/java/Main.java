@@ -18,7 +18,12 @@ public class Main {
         try {
             //String[][] data = readData(csvFileName);
             PropertyAssessments propertyAssessments = readData(csvFileName);
-
+            PropertyAssessment p = propertyAssessments.getPropertyAssessment(1191832);
+            if (p == null) {
+                System.out.println("Could not find account");
+            } else {
+                System.out.println("Found account");
+            }
             //dataMenu(data);
         } catch (IOException e) {
             System.out.println("Failed to read " + csvFileName);
