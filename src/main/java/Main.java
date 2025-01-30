@@ -17,14 +17,13 @@ public class Main {
         Scanner fileChoice = new Scanner(System.in);
         System.out.print("CSV filename: ");
         String fileName = fileChoice.nextLine();
-        //String csvFileName = "src/main/resources/" + fileName;
-        String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
+        String csvFileName = "src/main/resources/" + fileName;
 
         try {
             PropertyAssessments propertyAssessments = readData(csvFileName);
             dataMenu(propertyAssessments);
         } catch (IOException e) {
-            System.out.println("Failed to read " + csvFileName);
+            System.err.println("Error: can't open file " + fileName);
         }
     }
 
@@ -70,7 +69,7 @@ public class Main {
             String choice = userSelection.nextLine();
             int choiceInt = checkValidInt(choice);
             if (choiceInt == -1) {
-                System.out.println("Invalid input\n");
+                System.out.println("Invalid input");
             }
             else if (choiceInt >= 1 && choiceInt <= 3) {
                 handleChoice(choiceInt, propertyAssessments);
@@ -78,7 +77,7 @@ public class Main {
             else if (choiceInt == 4) {
                 runMenu = false;
             } else {
-                System.out.println("Invalid choice\n");
+                System.out.println("Invalid choice");
             }
         }
     }
@@ -170,5 +169,6 @@ public class Main {
         System.out.println("Assessed value = " + currencyFormat(searchedAccount.getAssessmentValueInt()));
         System.out.println("Assessment class = " + searchedAccount.getAssessmentClassification());
         System.out.println("Neighbourhood = " + searchedAccount.getNeighbourhood());
+        System.out.println("Location = " + searchedAccount.getPointLocation());
     }
 }

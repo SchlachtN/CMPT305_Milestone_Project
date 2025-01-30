@@ -6,4 +6,9 @@ public class PointLocation {
         this.latitude = latitudeData;
         this.longitude = longitudeData;
     }
+
+    @Override
+    public String toString() {
+        return "(" + this.latitude + ", " + this.longitude + ")";
+    }
 }
