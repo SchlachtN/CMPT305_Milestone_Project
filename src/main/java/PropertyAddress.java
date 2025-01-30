@@ -20,4 +20,12 @@ public class PropertyAddress {
     public String getStreetName() {
         return streetName;
     }
+
+    public String getAddress() {
+        if(suite.isBlank()) {
+            return (houseNo + " " + streetName);
+        } else {
+            return (suite + " " + houseNo + " " + streetName);
+        }
+    }
 }
