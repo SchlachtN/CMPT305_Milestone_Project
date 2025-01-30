@@ -1,7 +1,3 @@
-import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class PropertyAssessment {
     private String accountNo;
     private PropertyAddress propertyAddress;
@@ -38,11 +34,15 @@ public class PropertyAssessment {
         return garage;
     }
 
-    public Integer getAssessmentValue() {
+    public Integer getAssessmentValueInt() {
         if (assessmentValue.matches("[0-9]+")) {
             return Integer.parseInt(assessmentValue);
         } else {
             return null;
         }
+    }
+
+    public String getAssessmentValue() {
+        return assessmentValue;
     }
 }

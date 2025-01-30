@@ -188,6 +188,10 @@ public class Main {
         System.out.println("min = " + currencyFormat(min));
         int max = propertyAssessments.findMaximumValue();
         System.out.println("max = " + currencyFormat(max));
+        int range = propertyAssessments.getRange();
+        System.out.println("range = " + currencyFormat(range));
+        int mean = propertyAssessments.getMean();
+        System.out.println("mean = " + currencyFormat(mean));
     }
 
     /**
