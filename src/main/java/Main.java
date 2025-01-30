@@ -1,8 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.HashSet;
 
@@ -171,18 +173,21 @@ public class Main {
         }
     }
 
+    public static String currencyFormat(int amount) {
+        String amountStr = Integer.toString(amount);
+        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+        BigDecimal assessmentValueBigDecimal = new BigDecimal(amountStr);
+        return dollarFormat.format(assessmentValueBigDecimal);
+    }
+
     public static void generalStats(PropertyAssessments propertyAssessments) {
         System.out.println("\nDescriptive statistics of all property assessments");
         int n = propertyAssessments.getSize();
         System.out.println("n = " + n);
-        String minimumAccountNo = propertyAssessments.findMinimumValue();
-        PropertyAssessment minimumProperty = propertyAssessments.getPropertyAssessment(minimumAccountNo);
-        String min = minimumProperty.formatAssessmentValue();
-        System.out.println("min = " + min);
-        String maximumAccountNo = propertyAssessments.findMaximumValue();
-        PropertyAssessment maximumProperty = propertyAssessments.getPropertyAssessment(maximumAccountNo);
-        String max = maximumProperty.formatAssessmentValue();
-        System.out.println("max = " + max);
+        int min = propertyAssessments.findMinimumValue();
+        System.out.println("min = " + currencyFormat(min));
+        int max = propertyAssessments.findMaximumValue();
+        System.out.println("max = " + currencyFormat(max));
     }
 
     /**

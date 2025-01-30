@@ -45,10 +45,4 @@ public class PropertyAssessment {
             return null;
         }
     }
-
-    public String formatAssessmentValue() {
-        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
-        BigDecimal assessmentValueBigDecimal = new BigDecimal(assessmentValue);
-        return dollarFormat.format(assessmentValueBigDecimal);
-    }
 }

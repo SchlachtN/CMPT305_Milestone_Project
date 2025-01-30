@@ -24,35 +24,37 @@ public class PropertyAssessments {
         return this.propertyAssessments.size();
     }
 
-    public String findMinimumValue() {
+    public Integer findMinimumValue() {
         int min = Integer.MAX_VALUE;
-        String accountNo = null;
 
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
-            if (propertyAssessment.formatAssessmentValue() == null) {
+            if (propertyAssessment.getAssessmentValue() == null) {
                 continue;
             }
             if (propertyAssessment.getAssessmentValue() < min) {
                 min = propertyAssessment.getAssessmentValue();
-                accountNo = propertyAssessment.getAccountNo();
             }
         }
-        return accountNo;
+        return min;
     }
 
-    public String findMaximumValue() {
+    public Integer findMaximumValue() {
         int max = Integer.MIN_VALUE;
-        String accountNo = null;
 
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
-            if (propertyAssessment.formatAssessmentValue() == null) {
+            if (propertyAssessment.getAssessmentValue() == null) {
                 continue;
             }
             if (propertyAssessment.getAssessmentValue() > max) {
                 max = propertyAssessment.getAssessmentValue();
-                accountNo = propertyAssessment.getAccountNo();
             }
         }
-        return accountNo;
+        return max;
+    }
+
+    public Integer getRange() {
+        int min = this.findMinimumValue();
+        int max = this.findMaximumValue();
+        return (max - min);
     }
 }
