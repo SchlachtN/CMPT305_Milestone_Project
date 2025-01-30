@@ -54,6 +54,10 @@ public class PropertyAssessment {
         return neighbourhood.toString();
     }
 
+    public String getNeighbourhoodName() {
+        return neighbourhood.getNeighbourhoodName();
+    }
+
     public String getPointLocation() {
         return pointLocation.toString();
     }

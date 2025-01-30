@@ -89,4 +89,17 @@ public class PropertyAssessments {
 
         return (propertyValues[(propertyValues.length - 1) / 2] + propertyValues[propertyValues.length / 2]) / 2;
     }
+
+    public PropertyAssessments getNeighbourhoodAssessments(String input) {
+        String pattern = input.toUpperCase();
+        PropertyAssessments neighbourhoodAssessments = new PropertyAssessments();
+
+        for (PropertyAssessment propertyAssessment: propertyAssessments) {
+            String neighbourhoodName = propertyAssessment.getNeighbourhoodName();
+            if (pattern.equals(neighbourhoodName)) {
+                neighbourhoodAssessments.addProperty(propertyAssessment);
+            }
+        }
+        return neighbourhoodAssessments;
+    }
 }
