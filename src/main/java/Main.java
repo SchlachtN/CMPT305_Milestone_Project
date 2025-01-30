@@ -13,10 +13,13 @@ import java.util.HashSet;
  */
 public class Main {
     public static void main(String[] args) {
-        String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
+        Scanner fileChoice = new Scanner(System.in);
+        System.out.print("CSV filename: ");
+        String fileName = fileChoice.nextLine();
+        String csvFileName = "src/main/resources/" + fileName;
+        //String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
 
         try {
-            //String[][] data = readData(csvFileName);
             PropertyAssessments propertyAssessments = readData(csvFileName);
             dataMenu(propertyAssessments);
         } catch (IOException e) {
@@ -98,7 +101,6 @@ public class Main {
      */
     public static void dataMenu(PropertyAssessments propertyAssessments) {
         boolean runMenu = true;
-        System.out.println("Welcome to the City of Edmonton Property Assessment Data Menu!\n");
         String menu = menuDisplay();
         Scanner userSelection = new Scanner(System.in);
         while (runMenu) {
@@ -151,25 +153,26 @@ public class Main {
     /**
      * Display data for the user depending on choice selection
      * @param choice - int menu choice by user
-     * @param data - 2D array containing info
+     * @param propertyAssessments - PropertyAssessments object containing PropertyAssessment objects
      */
     public static void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
             case 1:
-                recordsCount(propertyAssessments);
+                generalStats(propertyAssessments);
                 break;
             case 2:
-                highAndLowAssetValues(propertyAssessments);
+
                 break;
             case 3:
-                numberOfWards(propertyAssessments);
-                break;
-            case 4:
-                listAssessmentClasses(propertyAssessments);
+
                 break;
             default:
                 break;
         }
+    }
+
+    public static void generalStats(PropertyAssessments propertyAssessments) {
+
     }
 
     /**

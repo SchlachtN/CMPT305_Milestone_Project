@@ -7,10 +7,9 @@ public class PropertyAssessments {
         this.propertyAssessments = new ArrayList<>();
     }
 
-    public PropertyAssessment getPropertyAssessment(int id) {
-        String searchedAccountNo = Integer.toString(id);
+    public PropertyAssessment getPropertyAssessment(String id) {
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
-            if (propertyAssessment.getAccountNo().equals(searchedAccountNo)) {
+            if (propertyAssessment.getAccountNo().equals(id)) {
                 return propertyAssessment;
             }
         }
