@@ -1,4 +1,8 @@
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.math.BigInteger;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,6 +12,28 @@ public class PropertyAssessments {
     public PropertyAssessments() {
         this.propertyAssessments = new ArrayList<>();
     }
+
+    public PropertyAssessments(String filePath) throws IOException {
+        // Establish propertyAssessments as a new, empty ArrayList
+        this.propertyAssessments = new ArrayList<>();
+        // Create a stream to read the CSV file
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(filePath))) {
+            // Skip the header - this assumes the first line is a header
+            reader.readLine();
+            // Read the file line by line and store all rows into an ArrayList
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split a line by comma works for simple CSV files
+                String[] values = line.split(",");
+                // Create new PropertyAssessment class with string array
+                PropertyAssessment p = new PropertyAssessment(values);
+                // Add new property to propertyAssessments
+                this.propertyAssessments.add(p);
+            }
+        }
+    }
+
+    // TODO Add constructor passing ArrayList of properties (for filtering)
 
     public PropertyAssessment getPropertyAssessment(String id) {
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
