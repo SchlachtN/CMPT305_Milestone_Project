@@ -16,8 +16,10 @@ public class Main {
         String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
 
         try {
-            String[][] data = readData(csvFileName);
-            dataMenu(data);
+            //String[][] data = readData(csvFileName);
+            PropertyAssessments propertyAssessments = readData(csvFileName);
+
+            //dataMenu(data);
         } catch (IOException e) {
             System.out.println("Failed to read " + csvFileName);
         }
@@ -29,6 +31,36 @@ public class Main {
      * @return data - the values in the CSV file
      * @throws IOException - input/output error
      */
+
+    public static PropertyAssessments readData(String csvFileName) throws IOException {
+        // Create a stream to read the CSV file
+        PropertyAssessments propertyAssessments = new PropertyAssessments();
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFileName))) {
+            // Skip the header - this assumes the first line is a header
+            reader.readLine();
+
+            // Read the file line by line and store all rows into a 2D array
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Split a line by comma works for simple CSV files
+                String[] values = line.split(",");
+                // Create new PropertyAssessment class with string array
+                PropertyAssessment p = new PropertyAssessment(values);
+                // Add new property to propertyAssessments
+                propertyAssessments.addProperty(p);
+            }
+        }
+
+        return propertyAssessments;
+    }
+
+    /*
+    /**
+     * Read the contents of a CSV file and return data as a 2D array of String.
+     * @param csvFileName - the CSV file name
+     * @return data - the values in the CSV file
+     * @throws IOException - input/output error
+
     public static String[][] readData(String csvFileName) throws IOException {
         // Create a stream to read the CSV file
         String[][] data;
@@ -59,6 +91,7 @@ public class Main {
         // Remove empty rows in the array and return it
         return Arrays.copyOf(data, index);
     }
+     */
 
     /**
      * Display menu for user to select CSV data info.

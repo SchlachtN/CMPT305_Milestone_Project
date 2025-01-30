@@ -7,6 +7,10 @@ public class PropertyAssessments {
         this.propertyAssessments = new ArrayList<>();
     }
 
+    public PropertyAssessment getPropertyAssessment(int id) {
+
+    }
+
     public void addProperty(PropertyAssessment propertyAssessment) {
         this.propertyAssessments.add(propertyAssessment);
     }
