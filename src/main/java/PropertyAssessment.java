@@ -38,7 +38,15 @@ public class PropertyAssessment {
         return garage;
     }
 
-    public String getAssessmentValue() {
+    public Integer getAssessmentValue() {
+        if (assessmentValue.matches("[0-9]+")) {
+            return Integer.parseInt(assessmentValue);
+        } else {
+            return null;
+        }
+    }
+
+    public String formatAssessmentValue() {
         NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
         BigDecimal assessmentValueBigDecimal = new BigDecimal(assessmentValue);
         String formattedAssessmentValue = dollarFormat.format(assessmentValueBigDecimal);

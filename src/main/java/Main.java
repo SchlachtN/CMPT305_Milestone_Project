@@ -16,8 +16,8 @@ public class Main {
         Scanner fileChoice = new Scanner(System.in);
         System.out.print("CSV filename: ");
         String fileName = fileChoice.nextLine();
-        String csvFileName = "src/main/resources/" + fileName;
-        //String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
+        //String csvFileName = "src/main/resources/" + fileName;
+        String csvFileName = "src/main/resources/Property_Assessment_Data_2024.csv";
 
         try {
             PropertyAssessments propertyAssessments = readData(csvFileName);
@@ -104,7 +104,7 @@ public class Main {
         String menu = menuDisplay();
         Scanner userSelection = new Scanner(System.in);
         while (runMenu) {
-            System.out.println(menu);
+            System.out.print(menu);
             String choice = userSelection.nextLine();
             int choiceInt = checkValidInt(choice);
             if (choiceInt == -1) {
@@ -123,13 +123,13 @@ public class Main {
 
     public static String menuDisplay() {
         return """
-                Please select an option:
+                \nPlease select an option:
                 \t1) General Statistics
                 \t2) Individual Property Information
                 \t3) Neighbourhood Information
                 \t4) Exit
-                
-                Option:""";
+               
+                Option:\s""";
     }
 
     /**
@@ -172,6 +172,9 @@ public class Main {
     }
 
     public static void generalStats(PropertyAssessments propertyAssessments) {
+        System.out.println("\nDescriptive statistics of all property assessments");
+        int n = propertyAssessments.getSize();
+        System.out.println("n = " + n);
 
     }
 

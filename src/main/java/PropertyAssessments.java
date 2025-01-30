@@ -19,4 +19,8 @@ public class PropertyAssessments {
     public void addProperty(PropertyAssessment propertyAssessment) {
         this.propertyAssessments.add(propertyAssessment);
     }
+
+    public Integer getSize() {
+        return this.propertyAssessments.size();
+    }
 }
