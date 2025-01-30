@@ -12,7 +12,7 @@ import java.util.Scanner;
  * property assessment values in the City of Edmonton) and
  * allow various methods to display specific information.
  */
-public class Main {
+public class Lab2Main {
     public static void main(String[] args) {
         Scanner fileChoice = new Scanner(System.in);
         System.out.print("CSV filename: ");
