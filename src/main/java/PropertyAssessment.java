@@ -45,4 +45,8 @@ public class PropertyAssessment {
     public String getAssessmentValue() {
         return assessmentValue;
     }
+
+    public String getAssessmentClassification() {
+        return assessmentClassification.toString();
+    }
 }

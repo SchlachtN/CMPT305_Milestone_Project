@@ -12,6 +12,8 @@ public class AssessmentClass {
         this.classTwoPercentage = twoPercentData;
         this.classThreePercentage = threePercentData;
         this.classOne = classOneData;
+        this.classTwo = "";
+        this.classThree = "";
     }
 
     public AssessmentClass(String onePercentData, String twoPercentData,
@@ -22,6 +24,7 @@ public class AssessmentClass {
             this.classThreePercentage = threePercentData;
             this.classOne = classOneData;
             this.classTwo = classTwoData;
+            this.classThree = "";
     }
 
     public AssessmentClass(String onePercentData, String twoPercentData,
@@ -33,5 +36,19 @@ public class AssessmentClass {
         this.classOne = classOneData;
         this.classTwo = classTwoData;
         this.classThree = classThreeData;
+    }
+
+    @Override
+    public String toString() {
+        String classification = "[" + this.classOne + " " + this.classOnePercentage + "%";
+        if(!this.classTwoPercentage.isBlank()) {
+            classification = classification + ", " +this.classTwo + " " + this.classTwoPercentage + "%";
+        }
+        if(!this.classThreePercentage.isBlank()) {
+            classification = classification + ", " +this.classThree + " " + this.classThreePercentage + "%";
+        }
+
+        classification = classification + "]";
+        return classification;
     }
 }
