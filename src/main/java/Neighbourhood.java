@@ -8,4 +8,22 @@ public class Neighbourhood {
         this.neighbourhoodName = neighbourhoodData;
         this.ward = wardData;
     }
+
+    public String getNeighbourhoodID() {
+        return neighbourhoodID;
+    }
+
+    public String getNeighbourhoodName() {
+        return neighbourhoodName;
+    }
+
+    public String getWard() {
+        return ward;
+    }
+
+    public String getNeighbourhood() {
+        return neighbourhoodName + " (" + ward + " Ward)";
+    }
+
+
 }
