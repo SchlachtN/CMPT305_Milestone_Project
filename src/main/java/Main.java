@@ -179,7 +179,10 @@ public class Main {
         PropertyAssessment minimumProperty = propertyAssessments.getPropertyAssessment(minimumAccountNo);
         String min = minimumProperty.formatAssessmentValue();
         System.out.println("min = " + min);
-        String maximumAccountNo;
+        String maximumAccountNo = propertyAssessments.findMaximumValue();
+        PropertyAssessment maximumProperty = propertyAssessments.getPropertyAssessment(maximumAccountNo);
+        String max = maximumProperty.formatAssessmentValue();
+        System.out.println("max = " + max);
     }
 
     /**

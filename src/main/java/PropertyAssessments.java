@@ -39,4 +39,20 @@ public class PropertyAssessments {
         }
         return accountNo;
     }
+
+    public String findMaximumValue() {
+        int max = Integer.MIN_VALUE;
+        String accountNo = null;
+
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            if (propertyAssessment.formatAssessmentValue() == null) {
+                continue;
+            }
+            if (propertyAssessment.getAssessmentValue() > max) {
+                max = propertyAssessment.getAssessmentValue();
+                accountNo = propertyAssessment.getAccountNo();
+            }
+        }
+        return accountNo;
+    }
 }
