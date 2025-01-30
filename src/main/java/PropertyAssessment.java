@@ -1,3 +1,7 @@
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class PropertyAssessment {
     private String accountNo;
     private PropertyAddress propertyAddress;
@@ -32,5 +36,12 @@ public class PropertyAssessment {
 
     public String getGarage() {
         return garage;
+    }
+
+    public String getAssessmentValue() {
+        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+        BigDecimal assessmentValueBigDecimal = new BigDecimal(assessmentValue);
+        String formattedAssessmentValue = dollarFormat.format(assessmentValueBigDecimal);
+        return "$" + formattedAssessmentValue;
     }
 }
