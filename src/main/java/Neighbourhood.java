@@ -21,9 +21,9 @@ public class Neighbourhood {
         return ward;
     }
 
-    public String getNeighbourhood() {
-        return neighbourhoodName + " (" + ward + " Ward)";
+    @Override
+    public String toString() {
+        return this.neighbourhoodName + " (" + this.ward + ")";
     }
-
 
 }

@@ -49,4 +49,8 @@ public class PropertyAssessment {
     public String getAssessmentClassification() {
         return assessmentClassification.toString();
     }
+
+    public String getNeighbourhood() {
+        return neighbourhood.toString();
+    }
 }
