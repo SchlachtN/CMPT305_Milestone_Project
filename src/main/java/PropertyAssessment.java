@@ -49,7 +49,6 @@ public class PropertyAssessment {
     public String formatAssessmentValue() {
         NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
         BigDecimal assessmentValueBigDecimal = new BigDecimal(assessmentValue);
-        String formattedAssessmentValue = dollarFormat.format(assessmentValueBigDecimal);
-        return "$" + formattedAssessmentValue;
+        return dollarFormat.format(assessmentValueBigDecimal);
     }
 }

@@ -175,7 +175,11 @@ public class Main {
         System.out.println("\nDescriptive statistics of all property assessments");
         int n = propertyAssessments.getSize();
         System.out.println("n = " + n);
-
+        String minimumAccountNo = propertyAssessments.findMinimumValue();
+        PropertyAssessment minimumProperty = propertyAssessments.getPropertyAssessment(minimumAccountNo);
+        String min = minimumProperty.formatAssessmentValue();
+        System.out.println("min = " + min);
+        String maximumAccountNo;
     }
 
     /**

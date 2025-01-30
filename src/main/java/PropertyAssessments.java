@@ -23,4 +23,20 @@ public class PropertyAssessments {
     public Integer getSize() {
         return this.propertyAssessments.size();
     }
+
+    public String findMinimumValue() {
+        int min = Integer.MAX_VALUE;
+        String accountNo = null;
+
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            if (propertyAssessment.formatAssessmentValue() == null) {
+                continue;
+            }
+            if (propertyAssessment.getAssessmentValue() < min) {
+                min = propertyAssessment.getAssessmentValue();
+                accountNo = propertyAssessment.getAccountNo();
+            }
+        }
+        return accountNo;
+    }
 }
