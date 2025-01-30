@@ -168,5 +168,6 @@ public class Main {
         System.out.println("Account Number = " + searchedAccount.getAccountNo());
         System.out.println("Address = " + searchedAccount.getAddress());
         System.out.println("Assessed value = " + currencyFormat(searchedAccount.getAssessmentValueInt()));
+        System.out.println("Assessment class = " + searchedAccount.getAssessmentClassification());
     }
 }
