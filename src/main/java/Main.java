@@ -119,19 +119,25 @@ public class Main {
     public static void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
             case 1:
+                System.out.println("\nDescriptive statistics of all property assessments");
                 generalStats(propertyAssessments);
                 break;
             case 2:
                 propertyInfo(propertyAssessments);
                 break;
             case 3:
-
+                neighbourhoodStats(propertyAssessments);
                 break;
             default:
                 break;
         }
     }
 
+    /**
+     * Take an integer input and convert to string before formatting to display as Canadian currency
+     * @param amount - Integer dollar value to format
+     * @return Integer value converted to String and formatted in currency form
+     */
     public static String currencyFormat(int amount) {
         String amountStr = Integer.toString(amount);
         NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
@@ -139,8 +145,11 @@ public class Main {
         return dollarFormat.format(assessmentValueBigDecimal);
     }
 
+    /**
+     * Call various methods in the PropertyAssessments class to give general information
+     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     */
     public static void generalStats(PropertyAssessments propertyAssessments) {
-        System.out.println("\nDescriptive statistics of all property assessments");
         int n = propertyAssessments.getSize();
         System.out.println("n = " + n);
         int min = propertyAssessments.findMinimumValue();
@@ -155,6 +164,10 @@ public class Main {
         System.out.println("median = " + currencyFormat(median));
     }
 
+    /**
+     * Call various methods in the PropertyAssessment class to display property specific information
+     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     */
     public static void propertyInfo(PropertyAssessments propertyAssessments) {
         Scanner accountInput = new Scanner(System.in);
         System.out.print("\nFind a property assessment by account number: ");
@@ -170,5 +183,18 @@ public class Main {
         System.out.println("Assessment class = " + searchedAccount.getAssessmentClassification());
         System.out.println("Neighbourhood = " + searchedAccount.getNeighbourhood());
         System.out.println("Location = " + searchedAccount.getPointLocation());
+    }
+
+    public static void neighbourhoodStats(PropertyAssessments propertyAssessments) {
+        Scanner neighbourhoodInput = new Scanner(System.in);
+        System.out.print("\nNeighbourhood: ");
+        String searchNeighbourhood = neighbourhoodInput.nextLine();
+        PropertyAssessments neighbourhoodAssessments = propertyAssessments.getNeighbourhoodAssessments(searchNeighbourhood);
+        if (neighbourhoodAssessments.getSize() == 0) {
+            System.out.println("Neighbourhood not found");
+            return;
+        }
+        System.out.println("Statistics (neighbourhood = " + searchNeighbourhood + ")");
+        generalStats(neighbourhoodAssessments);
     }
 }
