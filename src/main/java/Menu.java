@@ -93,8 +93,8 @@ public class Menu {
         System.out.print("\nPlease enter an assessment class: ");
         String className = classInput.nextLine();
         PropertyAssessments classAssessments = propertyAssessments.filterClass(className);
-        System.out.println("There are " + String.format("%,d", classAssessments.getSize()) + " properties in " + className);
-        System.out.println("The mean value is CAD " + String.format("%,d", classAssessments.getMean()));
-        System.out.println("The median value is CAD " + String.format("%,d", classAssessments.getMedian()));
+        System.out.println("There are " + String.format("%,d", classAssessments.getSize()) + " " + className + " properties in Edmonton");
+        System.out.println("The min value is CAD " + String.format("%,d", classAssessments.findMinimumValue()));
+        System.out.println("The max value is CAD " + String.format("%,d", classAssessments.findMaximumValue()));
     }
 }
