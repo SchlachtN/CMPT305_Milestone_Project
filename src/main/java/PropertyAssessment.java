@@ -62,7 +62,13 @@ public class PropertyAssessment {
         return pointLocation.toString();
     }
 
+    public boolean isNeighbourhood(String neighbourhood) {
+        neighbourhood = neighbourhood.toUpperCase();
+        return getNeighbourhoodName().equals(neighbourhood);
+    }
+
     public boolean isClass(String className) {
+        className = className.toUpperCase();
         if (assessmentClassification.getClassOne().equals(className)) {
             return true;
         } else if (assessmentClassification.getClassTwo().equals(className)) {
