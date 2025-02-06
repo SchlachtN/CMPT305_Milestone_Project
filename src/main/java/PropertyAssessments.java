@@ -141,8 +141,7 @@ public class PropertyAssessments {
                 neighbourhoodAssessments.add(propertyAssessment);
             }
         }
-        PropertyAssessments filteredAssessments = new PropertyAssessments(neighbourhoodAssessments);
-        return filteredAssessments;
+        return new PropertyAssessments(neighbourhoodAssessments);
     }
 
     public PropertyAssessments filterClass(String className) {
@@ -150,7 +149,10 @@ public class PropertyAssessments {
         String match;
         ArrayList<PropertyAssessment> classAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
-
+            if (propertyAssessment.isClass(pattern)) {
+                classAssessments.add(propertyAssessment);
+            }
         }
+        return new PropertyAssessments(classAssessments);
     }
 }
