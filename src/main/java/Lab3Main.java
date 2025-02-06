@@ -10,12 +10,9 @@ public class Lab3Main {
         PropertyAssessments propertyAssessments = new PropertyAssessments();
         try {
             propertyAssessments = new PropertyAssessments(filePath);
-        } catch (IOException e) {
-            System.err.println("Error: can't open file: ");
-        }
 
-        //Testing
-        int n = propertyAssessments.getSize();
-        System.out.println("Number of property assessments: " + n);
+        } catch (IOException e) {
+            System.err.println("Error: can't open file: " + fileName);
+        }
     }
 }

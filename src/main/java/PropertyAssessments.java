@@ -33,7 +33,12 @@ public class PropertyAssessments {
         }
     }
 
-    // TODO Add constructor passing ArrayList of properties (for filtering)
+    /*
+    TODO Add constructor passing ArrayList of properties (for filtering)
+    Remember to include this.propertyAssessments = new ArrayList<>();
+    Make a separate method that takes in a pattern word and outputs an ArrayList
+    Then, pass said ArrayList here and construct a PropertyAssessments object
+     */
 
     public PropertyAssessment getPropertyAssessment(String id) {
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
