@@ -78,18 +78,6 @@ public class Menu {
         }
     }
 
-    /**
-     * Take an integer input and convert to string before formatting to display as Canadian currency
-     * @param amount - Integer dollar value to format
-     * @return Integer value converted to String and formatted in currency form
-     */
-    public static String currencyFormat(int amount) {
-        String amountStr = Integer.toString(amount);
-        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
-        BigDecimal assessmentValueBigDecimal = new BigDecimal(amountStr);
-        return dollarFormat.format(assessmentValueBigDecimal);
-    }
-
     private void neighbourhoodInfo(PropertyAssessments propertyAssessments) {
         Scanner neighbourhoodInput = new Scanner(System.in);
         System.out.print("\nPlease enter a neighbourhood name: ");
@@ -101,6 +89,12 @@ public class Menu {
     }
 
     private void assessmentClassInfo(PropertyAssessments propertyAssessments) {
-
+        Scanner classInput = new Scanner(System.in);
+        System.out.print("\nPlease enter an assessment class: ");
+        String className = classInput.nextLine();
+        PropertyAssessments classAssessments = propertyAssessments.filterClass(className);
+        System.out.println("There are " + String.format("%,d", classAssessments.getSize()) + " properties in " + className);
+        System.out.println("The mean value is CAD " + String.format("%,d", classAssessments.getMean()));
+        System.out.println("The median value is CAD " + String.format("%,d", classAssessments.getMedian()));
     }
 }
