@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,43 +14,15 @@ public class Lab2Main {
         Scanner fileChoice = new Scanner(System.in);
         System.out.print("CSV filename: ");
         String fileName = fileChoice.nextLine();
-        String csvFileName = "src/main/resources/" + fileName;
-
+        String filePath = "src/main/resources/" + fileName;
+        PropertyAssessments propertyAssessments = new PropertyAssessments();
         try {
-            PropertyAssessments propertyAssessments = readData(csvFileName);
+            propertyAssessments = new PropertyAssessments(filePath);
             dataMenu(propertyAssessments);
         } catch (IOException e) {
-            System.err.println("Error: can't open file " + fileName);
-        }
-    }
-
-    /**
-     * Read the contents of a CSV file and return data as a 2D array of String.
-     * @param csvFileName - the CSV file name
-     * @return data - the values in the CSV file
-     * @throws IOException - input/output error
-     */
-
-    public static PropertyAssessments readData(String csvFileName) throws IOException {
-        // Create a stream to read the CSV file
-        PropertyAssessments propertyAssessments = new PropertyAssessments();
-        try (BufferedReader reader = Files.newBufferedReader(Paths.get(csvFileName))) {
-            // Skip the header - this assumes the first line is a header
-            reader.readLine();
-
-            // Read the file line by line and store all rows into a 2D array
-            String line;
-            while ((line = reader.readLine()) != null) {
-                // Split a line by comma works for simple CSV files
-                String[] values = line.split(",");
-                // Create new PropertyAssessment class with string array
-                PropertyAssessment p = new PropertyAssessment(values);
-                // Add new property to propertyAssessments
-                propertyAssessments.addProperty(p);
-            }
+            System.err.println("Error: can't open file: " + fileName);
         }
 
-        return propertyAssessments;
     }
 
     /**
