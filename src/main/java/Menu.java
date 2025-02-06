@@ -83,6 +83,10 @@ public class Menu {
         System.out.print("\nPlease enter a neighbourhood name: ");
         String neighbourhoodName = neighbourhoodInput.nextLine();
         PropertyAssessments neighbourhoodAssessments = propertyAssessments.filterNeighbourhood(neighbourhoodName);
+        if (neighbourhoodAssessments.getSize() == 0) {
+            System.out.println("Sorry, can't find data in " + neighbourhoodName);
+            return;
+        }
         System.out.println("There are " + String.format("%,d", neighbourhoodAssessments.getSize()) + " properties in " + neighbourhoodName);
         System.out.println("The mean value is CAD " + String.format("%,d", neighbourhoodAssessments.getMean()));
         System.out.println("The median value is CAD " + String.format("%,d", neighbourhoodAssessments.getMedian()));
@@ -93,6 +97,10 @@ public class Menu {
         System.out.print("\nPlease enter an assessment class: ");
         String className = classInput.nextLine();
         PropertyAssessments classAssessments = propertyAssessments.filterClass(className);
+        if (classAssessments.getSize() == 0) {
+            System.out.println("Sorry, can't find " + className + " properties");
+            return;
+        }
         System.out.println("There are " + String.format("%,d", classAssessments.getSize()) + " " + className + " properties in Edmonton");
         System.out.println("The min value is CAD " + String.format("%,d", classAssessments.findMinimumValue()));
         System.out.println("The max value is CAD " + String.format("%,d", classAssessments.findMaximumValue()));
