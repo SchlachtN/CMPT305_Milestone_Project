@@ -61,4 +61,16 @@ public class PropertyAssessment {
     public String getPointLocation() {
         return pointLocation.toString();
     }
+
+    public boolean isClass(String className) {
+        if (assessmentClassification.getClassOne().equals(className)) {
+            return true;
+        } else if (assessmentClassification.getClassTwo().equals(className)) {
+            return true;
+        } else if (assessmentClassification.getClassThree().equals(className)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
