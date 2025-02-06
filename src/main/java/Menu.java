@@ -95,9 +95,9 @@ public class Menu {
         System.out.print("\nPlease enter a neighbourhood name: ");
         String neighbourhoodName = neighbourhoodInput.nextLine();
         PropertyAssessments neighbourhoodAssessments = propertyAssessments.filterNeighbourhood(neighbourhoodName);
-        System.out.println("There are " + neighbourhoodAssessments.getSize() + " properties in " + neighbourhoodName);
-        System.out.println("The mean value is CAD " + currencyFormat(neighbourhoodAssessments.getMean()));
-        System.out.println("The median value is CAD " + currencyFormat(neighbourhoodAssessments.getMedian()));
+        System.out.println("There are " + String.format("%,d", neighbourhoodAssessments.getSize()) + " properties in " + neighbourhoodName);
+        System.out.println("The mean value is CAD " + String.format("%,d", neighbourhoodAssessments.getMean()));
+        System.out.println("The median value is CAD " + String.format("%,d", neighbourhoodAssessments.getMedian()));
     }
 
     private void assessmentClassInfo(PropertyAssessments propertyAssessments) {
