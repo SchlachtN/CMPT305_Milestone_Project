@@ -130,4 +130,27 @@ public class PropertyAssessments {
         }
         return neighbourhoodAssessments;
     }
+
+    public PropertyAssessments filterNeighbourbood(String neighbourhoodName) {
+        String pattern = neighbourhoodName.toUpperCase();
+        String match;
+        ArrayList<PropertyAssessment> neighbourhoodAssessments = new ArrayList<>();
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            match = propertyAssessment.getNeighbourhoodName();
+            if (pattern.equals(match)) {
+                neighbourhoodAssessments.add(propertyAssessment);
+            }
+        }
+        PropertyAssessments filteredAssessments = new PropertyAssessments(neighbourhoodAssessments);
+        return filteredAssessments;
+    }
+
+    public PropertyAssessments filterClass(String className) {
+        String pattern = className.toUpperCase();
+        String match;
+        ArrayList<PropertyAssessment> classAssessments = new ArrayList<>();
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+
+        }
+    }
 }

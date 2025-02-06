@@ -38,6 +38,18 @@ public class AssessmentClass {
         this.classThree = classThreeData;
     }
 
+    public String getClassOne() {
+        return classOne;
+    }
+
+    public String getClassTwo() {
+        return classTwo;
+    }
+
+    public String getClassThree() {
+        return classThree;
+    }
+
     @Override
     public String toString() {
         String classification = "[" + this.classOne + " " + this.classOnePercentage + "%";
