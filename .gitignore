@@ -40,3 +40,6 @@ build/
 ### CSV files ###
 Property_Assessment_Data_2024.csv
 stocks.csv
+
+### Unit Testing ###
+src/test

@@ -15,7 +15,7 @@ public class Lab2Main {
         System.out.print("CSV filename: ");
         String fileName = fileChoice.nextLine();
         String filePath = "src/main/resources/" + fileName;
-        PropertyAssessments propertyAssessments = new PropertyAssessments();
+        PropertyAssessments propertyAssessments;
         try {
             propertyAssessments = new PropertyAssessments(filePath);
             dataMenu(propertyAssessments);
