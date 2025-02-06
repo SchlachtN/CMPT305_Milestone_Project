@@ -10,7 +10,8 @@ public class Lab3Main {
         PropertyAssessments propertyAssessments = new PropertyAssessments();
         try {
             propertyAssessments = new PropertyAssessments(filePath);
-
+            Menu propertyMenu = new Menu(propertyAssessments);
+            propertyMenu.runMenu();
         } catch (IOException e) {
             System.err.println("Error: can't open file: " + fileName);
         }

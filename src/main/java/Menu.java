@@ -1,3 +1,6 @@
+import java.math.BigDecimal;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Menu {
@@ -75,8 +78,26 @@ public class Menu {
         }
     }
 
-    private void neighbourhoodInfo(PropertyAssessments propertyAssessments) {
+    /**
+     * Take an integer input and convert to string before formatting to display as Canadian currency
+     * @param amount - Integer dollar value to format
+     * @return Integer value converted to String and formatted in currency form
+     */
+    public static String currencyFormat(int amount) {
+        String amountStr = Integer.toString(amount);
+        NumberFormat dollarFormat = NumberFormat.getCurrencyInstance(Locale.CANADA);
+        BigDecimal assessmentValueBigDecimal = new BigDecimal(amountStr);
+        return dollarFormat.format(assessmentValueBigDecimal);
+    }
 
+    private void neighbourhoodInfo(PropertyAssessments propertyAssessments) {
+        Scanner neighbourhoodInput = new Scanner(System.in);
+        System.out.print("\nPlease enter a neighbourhood name: ");
+        String neighbourhoodName = neighbourhoodInput.nextLine();
+        PropertyAssessments neighbourhoodAssessments = propertyAssessments.filterNeighbourhood(neighbourhoodName);
+        System.out.println("There are " + neighbourhoodAssessments.getSize() + " properties in " + neighbourhoodName);
+        System.out.println("The mean value is CAD " + currencyFormat(neighbourhoodAssessments.getMean()));
+        System.out.println("The median value is CAD " + currencyFormat(neighbourhoodAssessments.getMedian()));
     }
 
     private void assessmentClassInfo(PropertyAssessments propertyAssessments) {
