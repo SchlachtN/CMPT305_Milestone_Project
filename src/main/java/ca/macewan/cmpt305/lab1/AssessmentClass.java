@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 public class AssessmentClass {
     private String classOnePercentage;
     private String classTwoPercentage;

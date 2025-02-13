@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -60,7 +62,7 @@ public class Menu {
     /**
      * Display data for the user depending on choice selection
      * @param choice - int menu choice by user
-     * @param propertyAssessments - PropertyAssessments object containing PropertyAssessment objects
+     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments object containing ca.macewan.cmpt305.lab1.PropertyAssessment objects
      */
     private void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {

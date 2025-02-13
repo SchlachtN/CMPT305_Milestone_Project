@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -25,7 +27,7 @@ public class PropertyAssessments {
             while ((line = reader.readLine()) != null) {
                 // Split a line by comma works for simple CSV files
                 String[] values = line.split(",");
-                // Create new PropertyAssessment class with string array
+                // Create new ca.macewan.cmpt305.lab1.PropertyAssessment class with string array
                 PropertyAssessment p = new PropertyAssessment(values);
                 // Add new property to propertyAssessments
                 this.propertyAssessments.add(p);

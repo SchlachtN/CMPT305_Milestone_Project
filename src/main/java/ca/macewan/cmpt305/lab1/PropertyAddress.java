@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 public class PropertyAddress {
     private String suite;
     private String houseNo;

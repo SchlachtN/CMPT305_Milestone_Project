@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -27,7 +29,7 @@ public class Lab2Main {
 
     /**
      * Display menu for user to select CSV data info.
-     * @param propertyAssessments - PropertyAssessments class that stores PropertyAssessments
+     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments class that stores ca.macewan.cmpt305.lab1.PropertyAssessments
      */
     public static void dataMenu(PropertyAssessments propertyAssessments) {
         boolean runMenu = true;
@@ -56,7 +58,7 @@ public class Lab2Main {
                 \nPlease select an option:
                 \t1) General Statistics
                 \t2) Individual Property Information
-                \t3) Neighbourhood Information
+                \t3) ca.macewan.cmpt305.lab1.Neighbourhood Information
                 \t4) Exit
                
                 Option:\s""";
@@ -83,7 +85,7 @@ public class Lab2Main {
     /**
      * Display data for the user depending on choice selection
      * @param choice - int menu choice by user
-     * @param propertyAssessments - PropertyAssessments object containing PropertyAssessment objects
+     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments object containing ca.macewan.cmpt305.lab1.PropertyAssessment objects
      */
     public static void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
@@ -115,8 +117,8 @@ public class Lab2Main {
     }
 
     /**
-     * Call various methods in the PropertyAssessments class to give general information
-     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     * Call various methods in the ca.macewan.cmpt305.lab1.PropertyAssessments class to give general information
+     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments object containing list of ca.macewan.cmpt305.lab1.PropertyAssessment objects
      */
     public static void generalStats(PropertyAssessments propertyAssessments) {
         int n = propertyAssessments.getSize();
@@ -134,8 +136,8 @@ public class Lab2Main {
     }
 
     /**
-     * Call various methods in the PropertyAssessment class to display property specific information
-     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     * Call various methods in the ca.macewan.cmpt305.lab1.PropertyAssessment class to display property specific information
+     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments object containing list of ca.macewan.cmpt305.lab1.PropertyAssessment objects
      */
     public static void propertyInfo(PropertyAssessments propertyAssessments) {
         Scanner accountInput = new Scanner(System.in);
@@ -150,17 +152,17 @@ public class Lab2Main {
         System.out.println("Address = " + searchedAccount.getAddress());
         System.out.println("Assessed value = " + currencyFormat(searchedAccount.getAssessmentValueInt()));
         System.out.println("Assessment class = " + searchedAccount.getAssessmentClassification());
-        System.out.println("Neighbourhood = " + searchedAccount.getNeighbourhood());
+        System.out.println("ca.macewan.cmpt305.lab1.Neighbourhood = " + searchedAccount.getNeighbourhood());
         System.out.println("Location = " + searchedAccount.getPointLocation());
     }
 
     public static void neighbourhoodStats(PropertyAssessments propertyAssessments) {
         Scanner neighbourhoodInput = new Scanner(System.in);
-        System.out.print("\nNeighbourhood: ");
+        System.out.print("\nca.macewan.cmpt305.lab1.Neighbourhood: ");
         String searchNeighbourhood = neighbourhoodInput.nextLine();
         PropertyAssessments neighbourhoodAssessments = propertyAssessments.getNeighbourhoodAssessments(searchNeighbourhood);
         if (neighbourhoodAssessments.getSize() == 0) {
-            System.out.println("Neighbourhood not found");
+            System.out.println("ca.macewan.cmpt305.lab1.Neighbourhood not found");
             return;
         }
         System.out.println("Statistics (neighbourhood = " + searchNeighbourhood + ")");

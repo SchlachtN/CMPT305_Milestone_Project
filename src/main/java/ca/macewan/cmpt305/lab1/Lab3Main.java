@@ -1,3 +1,5 @@
+package ca.macewan.cmpt305.lab1;
+
 import java.io.IOException;
 import java.util.Scanner;
 
