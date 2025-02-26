@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ca.macewan.cmpt305</groupId>
-    <artifactId>ReadCSV</artifactId>
+    <artifactId>CMPT305_Individual_Milestone</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
