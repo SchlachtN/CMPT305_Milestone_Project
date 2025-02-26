@@ -135,14 +135,16 @@ public class Lab2Main {
     }
 
     /**
-     * Call various methods in the ca.macewan.cmpt305.lab1.PropertyAssessment class to display property specific information
-     * @param propertyAssessments - ca.macewan.cmpt305.lab1.PropertyAssessments object containing list of ca.macewan.cmpt305.lab1.PropertyAssessment objects
+     * Call various methods in the PropertyAssessment class to display property specific information
+     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
      */
     public static void propertyInfo(PropertyAssessments propertyAssessments) {
+        // Prompt user for account number of property
         Scanner accountInput = new Scanner(System.in);
         System.out.print("\nFind a property assessment by account number: ");
         String accountNo = accountInput.nextLine();
         PropertyAssessment searchedAccount = propertyAssessments.getPropertyAssessment(accountNo);
+        // Account number cannot be found
         if (searchedAccount == null) {
             System.out.println("Error: Invalid account number...");
             return;
@@ -151,17 +153,24 @@ public class Lab2Main {
         System.out.println("Address = " + searchedAccount.getAddress());
         System.out.println("Assessed value = " + currencyFormat(searchedAccount.getAssessmentValueInt()));
         System.out.println("Assessment class = " + searchedAccount.getAssessmentClassification());
-        System.out.println("ca.macewan.cmpt305.lab1.Neighbourhood = " + searchedAccount.getNeighbourhood());
+        System.out.println("Neighbourhood = " + searchedAccount.getNeighbourhood());
         System.out.println("Location = " + searchedAccount.getPointLocation());
     }
 
+    /**
+     * Filter properties by a specific neighbourhood and display general information
+     * @param propertyAssessments PropertyAssessments object containing list of PropertyAssessment classes
+     */
     public static void neighbourhoodStats(PropertyAssessments propertyAssessments) {
+        // Prompt user for neighbourhood name
         Scanner neighbourhoodInput = new Scanner(System.in);
-        System.out.print("\nca.macewan.cmpt305.lab1.Neighbourhood: ");
+        System.out.print("\nNeighbourhood: ");
         String searchNeighbourhood = neighbourhoodInput.nextLine();
+        // TODO - Replace getNeigbourhoodAssessments with filter
         PropertyAssessments neighbourhoodAssessments = propertyAssessments.getNeighbourhoodAssessments(searchNeighbourhood);
+        // Neighbourhood name not found
         if (neighbourhoodAssessments.getSize() == 0) {
-            System.out.println("ca.macewan.cmpt305.lab1.Neighbourhood not found");
+            System.out.println("Neighbourhood not found");
             return;
         }
         System.out.println("Statistics (neighbourhood = " + searchNeighbourhood + ")");
