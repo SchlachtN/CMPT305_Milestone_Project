@@ -27,12 +27,11 @@ public class Lab2Main {
         } catch (IOException e) {
             System.err.println("Error: can't open file: " + fileName);
         }
-
     }
 
     /**
      * Display menu for user to select CSV data info.
-     * @param propertyAssessments - PropertyAssessments class that stores PropertyAssessments
+     * @param propertyAssessments - PropertyAssessments class that stores PropertyAssessment objects
      */
     public static void dataMenu(PropertyAssessments propertyAssessments) {
         boolean runMenu = true;
@@ -43,12 +42,12 @@ public class Lab2Main {
             System.out.print(menu);
             String choice = userSelection.nextLine();
             int choiceInt = checkValidInt(choice);
-            // User did not enter a number
+            // User did not enter a numerical value
             if (choiceInt == -1) {
                 System.out.println("Invalid input");
             } else if (choiceInt >= 1 && choiceInt <= 3) { // Options 1-3
                 handleChoice(choiceInt, propertyAssessments);
-            } else if (choiceInt == 4) { // Select to close menu
+            } else if (choiceInt == 4) { // Select to close menu and terminate
                 runMenu = false;
             } else { // Number option not on menu
                 System.out.println("Invalid choice");
@@ -79,13 +78,14 @@ public class Lab2Main {
         // Attempt to parse menu option and return
         try {
             return Integer.parseInt(choice);
+        // Could not parse to int
         } catch (NumberFormatException e) {
             return -1;
         }
     }
 
     /**
-     * Display data for the user depending on choice selection
+     * Handles user choice and determines what data to display
      * @param choice - int menu choice by user
      * @param propertyAssessments - PropertyAssessments object containing PropertyAssessment objects
      */
@@ -166,8 +166,7 @@ public class Lab2Main {
         Scanner neighbourhoodInput = new Scanner(System.in);
         System.out.print("\nNeighbourhood: ");
         String searchNeighbourhood = neighbourhoodInput.nextLine();
-        // TODO - Replace getNeigbourhoodAssessments with filter
-        PropertyAssessments neighbourhoodAssessments = propertyAssessments.getNeighbourhoodAssessments(searchNeighbourhood);
+        PropertyAssessments neighbourhoodAssessments = propertyAssessments.filter((property) -> searchNeighbourhood.toUpperCase().equals(property.getNeighbourhoodName()));
         // Neighbourhood name not found
         if (neighbourhoodAssessments.getSize() == 0) {
             System.out.println("Neighbourhood not found");
