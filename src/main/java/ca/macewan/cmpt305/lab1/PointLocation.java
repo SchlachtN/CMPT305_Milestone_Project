@@ -13,4 +13,17 @@ public class PointLocation {
     public String toString() {
         return "(" + this.latitude + ", " + this.longitude + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PointLocation p = (PointLocation) o;
+        return this.latitude.equals(p.latitude) && this.longitude.equals(p.longitude);
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
 }

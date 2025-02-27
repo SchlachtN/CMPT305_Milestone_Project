@@ -31,4 +31,17 @@ public class PropertyAddress {
             return (suite + " " + houseNo + " " + streetName);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PropertyAddress a = (PropertyAddress) o;
+        return this.hashCode() == a.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
 }

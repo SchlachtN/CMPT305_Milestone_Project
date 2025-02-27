@@ -156,7 +156,6 @@ public class PropertyAssessments {
         return new PropertyAssessments(classAssessments);
     }
 
-    // TODO - Ask Hanan if predicate should be moved into function and have method ask for pattern
     public PropertyAssessments filter(Predicate<PropertyAssessment> p) {
         ArrayList<PropertyAssessment> targetAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
@@ -165,5 +164,23 @@ public class PropertyAssessments {
             }
         }
         return new PropertyAssessments(targetAssessments);
+    }
+
+    @Override
+    public String toString() {
+        return "[PropertyAssessments:" + this.getSize() + "]";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PropertyAssessments pa = (PropertyAssessments) o;
+        return this.hashCode() == pa.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.propertyAssessments.hashCode();
     }
 }

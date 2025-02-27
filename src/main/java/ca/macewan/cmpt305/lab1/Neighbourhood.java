@@ -33,12 +33,12 @@ public class Neighbourhood {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Neighbourhood n = (Neighbourhood) o;
-        return this.hashCode() == n.hashCode();
+        return this.neighbourhoodID.equals(n.neighbourhoodID);
     }
 
     @Override
     public int hashCode() {
-        return this.toString().hashCode();
+        return this.neighbourhoodID.hashCode();
     }
 
 }
