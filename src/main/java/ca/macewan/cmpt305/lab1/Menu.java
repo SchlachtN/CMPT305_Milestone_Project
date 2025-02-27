@@ -81,7 +81,8 @@ public class Menu {
         Scanner neighbourhoodInput = new Scanner(System.in);
         System.out.print("\nPlease enter a neighbourhood name: ");
         String neighbourhoodName = neighbourhoodInput.nextLine();
-        PropertyAssessments neighbourhoodAssessments = propertyAssessments.filterNeighbourhood(neighbourhoodName);
+        //PropertyAssessments neighbourhoodAssessments = propertyAssessments.filterNeighbourhood(neighbourhoodName);
+        PropertyAssessments neighbourhoodAssessments = propertyAssessments.filter((property) -> neighbourhoodName.toUpperCase().equals(property.getNeighbourhoodName()));
         if (neighbourhoodAssessments.getSize() == 0) {
             System.out.println("Sorry, can't find data in " + neighbourhoodName);
             return;
@@ -95,7 +96,8 @@ public class Menu {
         Scanner classInput = new Scanner(System.in);
         System.out.print("\nPlease enter an assessment class: ");
         String className = classInput.nextLine();
-        PropertyAssessments classAssessments = propertyAssessments.filterClass(className);
+        //PropertyAssessments classAssessments = propertyAssessments.filterClass(className);
+        PropertyAssessments classAssessments = propertyAssessments.filter((property) -> property.isClass(className.toUpperCase()));
         if (classAssessments.getSize() == 0) {
             System.out.println("Sorry, can't find " + className + " properties");
             return;

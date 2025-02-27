@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 public class PropertyAssessments {
     private ArrayList<PropertyAssessment> propertyAssessments;
@@ -133,6 +134,7 @@ public class PropertyAssessments {
         return neighbourhoodAssessments;
     }
 
+    @Deprecated
     public PropertyAssessments filterNeighbourhood(String neighbourhoodName) {
         ArrayList<PropertyAssessment> neighbourhoodAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
@@ -143,6 +145,7 @@ public class PropertyAssessments {
         return new PropertyAssessments(neighbourhoodAssessments);
     }
 
+    @Deprecated
     public PropertyAssessments filterClass(String className) {
         ArrayList<PropertyAssessment> classAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
@@ -151,5 +154,15 @@ public class PropertyAssessments {
             }
         }
         return new PropertyAssessments(classAssessments);
+    }
+
+    public PropertyAssessments filter(Predicate<PropertyAssessment> p) {
+        ArrayList<PropertyAssessment> targetAssessments = new ArrayList<>();
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            if (p.test(propertyAssessment)) {
+                targetAssessments.add(propertyAssessment);
+            }
+        }
+        return new PropertyAssessments(targetAssessments);
     }
 }
