@@ -156,6 +156,7 @@ public class PropertyAssessments {
         return new PropertyAssessments(classAssessments);
     }
 
+    // TODO - Ask Hanan if predicate should be moved into function and have method ask for pattern
     public PropertyAssessments filter(Predicate<PropertyAssessment> p) {
         ArrayList<PropertyAssessment> targetAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {

@@ -28,4 +28,17 @@ public class Neighbourhood {
         return this.neighbourhoodName + " (" + this.ward + ")";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Neighbourhood n = (Neighbourhood) o;
+        return this.hashCode() == n.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
+
 }

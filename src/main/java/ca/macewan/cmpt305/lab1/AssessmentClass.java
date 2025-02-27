@@ -65,4 +65,17 @@ public class AssessmentClass {
         classification = classification + "]";
         return classification;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AssessmentClass a = (AssessmentClass) o;
+        return a.hashCode() == this.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.toString().hashCode();
+    }
 }
