@@ -186,20 +186,6 @@ public class PropertyAssessments {
     }
 
     @Deprecated
-    public PropertyAssessments getNeighbourhoodAssessments(String input) {
-        String pattern = input.toUpperCase();
-        PropertyAssessments neighbourhoodAssessments = new PropertyAssessments();
-
-        for (PropertyAssessment propertyAssessment: propertyAssessments) {
-            String neighbourhoodName = propertyAssessment.getNeighbourhoodName();
-            if (pattern.equals(neighbourhoodName)) {
-                neighbourhoodAssessments.addProperty(propertyAssessment);
-            }
-        }
-        return neighbourhoodAssessments;
-    }
-
-    @Deprecated
     public PropertyAssessments filterNeighbourhood(String neighbourhoodName) {
         ArrayList<PropertyAssessment> neighbourhoodAssessments = new ArrayList<>();
         for (PropertyAssessment propertyAssessment : propertyAssessments) {
