@@ -31,7 +31,7 @@ public class Lab2Main {
 
     /**
      * Display menu for user to select CSV data info.
-     * @param propertyAssessments - PropertyAssessments class that stores PropertyAssessment objects
+     * @param propertyAssessments PropertyAssessments class that stores PropertyAssessment objects
      */
     public static void dataMenu(PropertyAssessments propertyAssessments) {
         boolean runMenu = true;
@@ -71,8 +71,8 @@ public class Lab2Main {
 
     /**
      * Check that user has inputted a valid integer for menu
-     * @param choice - the string input given by the user
-     * @return choiceInt - Integer conversion of user choice or -1 if unable to parse to int
+     * @param choice the string input given by the user
+     * @return choiceInt Integer conversion of user choice or -1 if unable to parse to int
      */
     public static int checkValidInt(String choice) {
         // Attempt to parse menu option and return
@@ -86,8 +86,8 @@ public class Lab2Main {
 
     /**
      * Handles user choice and determines what data to display
-     * @param choice - int menu choice by user
-     * @param propertyAssessments - PropertyAssessments object containing PropertyAssessment objects
+     * @param choice int menu choice by user
+     * @param propertyAssessments PropertyAssessments object containing PropertyAssessment objects
      */
     public static void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
@@ -111,7 +111,7 @@ public class Lab2Main {
 
     /**
      * Take an integer input and convert to string before formatting to display as Canadian currency
-     * @param amount - Integer dollar value to format
+     * @param amount Integer dollar value to format
      * @return Integer value converted to String and formatted in currency form
      */
     public static String currencyFormat(int amount) {
@@ -123,7 +123,7 @@ public class Lab2Main {
 
     /**
      * Call various methods in the PropertyAssessments class to give general information
-     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     * @param propertyAssessments PropertyAssessments object containing list of PropertyAssessment objects
      */
     public static void generalStats(PropertyAssessments propertyAssessments) {
         System.out.println("n = " + propertyAssessments.getSize());
@@ -136,7 +136,7 @@ public class Lab2Main {
 
     /**
      * Call various methods in the PropertyAssessment class to display property specific information
-     * @param propertyAssessments - PropertyAssessments object containing list of PropertyAssessment objects
+     * @param propertyAssessments PropertyAssessments object containing list of PropertyAssessment objects
      */
     public static void propertyInfo(PropertyAssessments propertyAssessments) {
         // Prompt user for account number of property

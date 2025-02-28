@@ -59,8 +59,8 @@ public class Menu {
 
     /**
      * Check that user has inputted a valid integer for menu
-     * @param choice - the string input given by the user
-     * @return choiceInt - Integer conversion of user choice or -1 if unable to parse to int
+     * @param choice the string input given by the user
+     * @return Integer conversion of user choice or -1 if unable to parse to int
      */
     private int checkValidInt(String choice) {
         // Attempt to parse to int
@@ -74,8 +74,8 @@ public class Menu {
 
     /**
      * Handle user menu selection to display appropriate data
-     * @param choice - int menu choice by user
-     * @param propertyAssessments - PropertyAssessment object containing all PropertyAssessment objects in CSV file
+     * @param choice int menu choice by user
+     * @param propertyAssessments PropertyAssessment object containing all PropertyAssessment objects in CSV file
      */
     private void handleChoice(int choice, PropertyAssessments propertyAssessments) {
         switch (choice) {
@@ -95,7 +95,7 @@ public class Menu {
     /**
      * Create filtered PropertyAssessments object for specific neighbourhood
      * and displays relevant information for neighbourhood properties
-     * @param propertyAssessments - PropertyAssessment object containing all PropertyAssessment objects in CSV file
+     * @param propertyAssessments PropertyAssessment object containing all PropertyAssessment objects in CSV file
      */
     private void neighbourhoodInfo(PropertyAssessments propertyAssessments) {
         // Ask user for neighbourhood name
@@ -118,7 +118,7 @@ public class Menu {
      * Create filtered PropertyAssessments class for specific assessment class
      * and display relevant information for properties belonging to assessment
      * class
-     * @param propertyAssessments - PropertyAssessment object containing all PropertyAssessment objects in CSV file
+     * @param propertyAssessments PropertyAssessment object containing all PropertyAssessment objects in CSV file
      */
     private void assessmentClassInfo(PropertyAssessments propertyAssessments) {
         // Ask user for assessment class name
