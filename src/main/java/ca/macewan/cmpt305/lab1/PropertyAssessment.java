@@ -1,12 +1,12 @@
 package ca.macewan.cmpt305.lab1;
 
 public class PropertyAssessment {
-    private String accountNo;
+    private final String accountNo;
     private PropertyAddress propertyAddress;
     private String garage;
     private Neighbourhood neighbourhood;
     private String assessmentValue;
-    private PointLocation pointLocation;
+    private final PointLocation pointLocation;
     private AssessmentClass assessmentClassification;
 
     public PropertyAssessment(String[] propertyData) {
