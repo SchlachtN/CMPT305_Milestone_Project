@@ -99,9 +99,11 @@ public class AssessmentClass {
     @Override
     public String toString() {
         String classification = "[" + this.classOne + " " + this.classOnePercentage + "%";
+        // Has a class two type
         if(!this.classTwoPercentage.isBlank()) {
             classification = classification + ", " +this.classTwo + " " + this.classTwoPercentage + "%";
         }
+        // Has a class three type
         if(!this.classThreePercentage.isBlank()) {
             classification = classification + ", " +this.classThree + " " + this.classThreePercentage + "%";
         }
