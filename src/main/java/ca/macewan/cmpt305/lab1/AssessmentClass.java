@@ -1,5 +1,9 @@
 package ca.macewan.cmpt305.lab1;
 
+/**
+ * Stores and provides all information concerning the assessment classes of a
+ * PropertyAssessment class.
+ */
 public class AssessmentClass {
     private String classOnePercentage;
     private String classTwoPercentage;
@@ -8,6 +12,13 @@ public class AssessmentClass {
     private String classTwo;
     private String classThree;
 
+    /**
+     * Constructor for properties only belonging to class one
+     * @param onePercentData Percentage information for class one
+     * @param twoPercentData Percentage information for class two
+     * @param threePercentData Percentage information for class three
+     * @param classOneData Assessment class type for class one
+     */
     public AssessmentClass(String onePercentData, String twoPercentData,
                            String threePercentData, String classOneData) {
         this.classOnePercentage = onePercentData;
@@ -18,6 +29,14 @@ public class AssessmentClass {
         this.classThree = "";
     }
 
+    /**
+     * Constructor for properties with class one and class two information
+     * @param onePercentData Percentage information for class one
+     * @param twoPercentData Percentage information for class two
+     * @param threePercentData Percentage information for class three
+     * @param classOneData Assessment class type for class one
+     * @param classTwoData Assessment class type for class two
+     */
     public AssessmentClass(String onePercentData, String twoPercentData,
                 String threePercentData, String classOneData,
                 String classTwoData) {
@@ -29,6 +48,15 @@ public class AssessmentClass {
             this.classThree = "";
     }
 
+    /**
+     * Constructor for properties with three assessment classes
+     * @param onePercentData Percentage information for class one
+     * @param twoPercentData Percentage information for class two
+     * @param threePercentData Percentage information for class three
+     * @param classOneData Assessment class type for class one
+     * @param classTwoData Assessment class type for class two
+     * @param classThreeData Assessment class type for class three
+     */
     public AssessmentClass(String onePercentData, String twoPercentData,
                            String threePercentData, String classOneData,
                            String classTwoData, String classThreeData) {
@@ -40,18 +68,34 @@ public class AssessmentClass {
         this.classThree = classThreeData;
     }
 
+    /**
+     * Getter method for assessment class one type
+     * @return String type for class one
+     */
     public String getClassOne() {
         return classOne;
     }
 
+    /**
+     * Getter method for assessment class two type
+     * @return String type for class two
+     */
     public String getClassTwo() {
         return classTwo;
     }
 
+    /**
+     * Getter method for assessment class three type
+     * @return String type for class three
+     */
     public String getClassThree() {
         return classThree;
     }
 
+    /**
+     *
+     * @return String formatted to list all assessment class types if they exist
+     */
     @Override
     public String toString() {
         String classification = "[" + this.classOne + " " + this.classOnePercentage + "%";
@@ -66,6 +110,12 @@ public class AssessmentClass {
         return classification;
     }
 
+    /**
+     *
+     * @param o Object to compare to AssessmentClass object
+     * @return True if o is an AssessmentClass object and has the same hashcode.
+     * Otherwise, return false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,6 +124,10 @@ public class AssessmentClass {
         return a.hashCode() == this.hashCode();
     }
 
+    /**
+     *
+     * @return Hashcode value of formatted string produced by toString
+     */
     @Override
     public int hashCode() {
         return this.toString().hashCode();

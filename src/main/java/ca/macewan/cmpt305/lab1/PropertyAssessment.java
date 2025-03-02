@@ -1,5 +1,8 @@
 package ca.macewan.cmpt305.lab1;
 
+/**
+ * Serves as a collection for all information pertaining to a specific property.
+ */
 public class PropertyAssessment {
     private final String accountNo;
     private PropertyAddress propertyAddress;
