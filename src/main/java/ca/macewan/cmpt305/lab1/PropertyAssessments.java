@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.function.Predicate;
 
 /**
@@ -155,6 +156,7 @@ public class PropertyAssessments {
         // Get number of PropertyAssessment objects
         String count = this.getSize().toString();
         BigInteger propertyCount = new BigInteger(count);
+
         // Calculate and return mean
         return sum.divide(propertyCount).intValue();
     }
@@ -183,6 +185,38 @@ public class PropertyAssessments {
 
         // If array size is even, add the two assessment values closest to the middle and divide sum by 2
         return (propertyValues[(propertyValues.length - 1) / 2] + propertyValues[propertyValues.length / 2]) / 2;
+    }
+
+    /**
+     * Count the number of properties below the median of PropertyAssessments.
+     * @return Integer count of values below the median
+     */
+    public Integer belowMedian() {
+        int median = this.getMedian();
+        int count = 0;
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            int propertyValue = propertyAssessment.getAssessmentValueInt();
+            if (propertyValue <= median) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Count the number of properties below the mean of PropertyAssessments.
+     * @return Integer count of values below the mean
+     */
+    public Integer belowMean() {
+        int mean = this.getMean();
+        int count = 0;
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            int propertyValue = propertyAssessment.getAssessmentValueInt();
+            if (propertyValue <= mean) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -249,6 +283,19 @@ public class PropertyAssessments {
             }
         }
         return new PropertyAssessments(targetAssessments);
+    }
+
+    /**
+     * Find all unique neighbourhood names in data
+     * @return Hashset of neighbourhood names
+     */
+    public HashSet<String> getAllNeighbourhoods() {
+        HashSet<String> neighbourhoods = new HashSet<>();
+
+        for (PropertyAssessment propertyAssessment : propertyAssessments) {
+            neighbourhoods.add(propertyAssessment.getNeighbourhoodName());
+        }
+        return neighbourhoods;
     }
 
     /**
